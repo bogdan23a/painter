@@ -1,0 +1,60 @@
+{
+    "data" : {
+        "cardsagainsthumanity" : {
+            "id": "T_000",
+            "name": "Cards Against Humanity",
+            "colors": {
+                "body": "black",
+                "text": "white",
+                "prompt": {
+                    "text": "white",
+                    "border": "white",
+                    "background": "black"
+                },
+                "response": {
+                    "text": "black",
+                    "border": "black",
+                    "background": "white"
+                }
+            },
+            "font": "Helvetica",
+            "fontSize": {
+                "card": "1.25rem",
+                "title": "6vmax"
+            },
+            "fontWeight": "bolder",
+            "border": {
+                "radius": ".25in",
+                "width": "3px",
+                "style": "solid",
+                "color": {
+                    "prompt": "white",
+                    "response": "black"
+                }
+            },
+            "size": {
+                "card": {
+                    "height": "4in",
+                    "width": "2.5in"
+                }
+            },
+            "margin": {
+                "card": {
+                    "left": "10%",
+                    "bottom": "10px",
+                    "right": "10px",
+                    "top": "10px"
+                }
+            },
+            "padding": {
+                "card": {
+                    "left": "17px",
+                    "bottom": "0",
+                    "right": "17px",
+                    "top": "15px"
+                }
+            },
+            "wordWrap": "break-workd"
+        }
+    }
+}

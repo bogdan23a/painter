@@ -1,33 +1,42 @@
-import React, { Component } from "react";
-import {
-  Route,
-  NavLink,
-  HashRouter
-} from "react-router-dom";
-import Home from "./Home";
-import Stuff from "./Stuff";
-import Contact from "./Contact";
- 
-class Main extends Component {
-  render() {
-    return (
-        <HashRouter>
-            <div>
-            <h1>Simple SPA</h1>
-            <ul className="header">
-                <li><NavLink to="/">Home</NavLink></li>
-                <li><NavLink to="/stuff">Stuff</NavLink></li>
-                <li><NavLink to="/contact">Contact</NavLink></li>
-            </ul>
-            <div className="content">
-                <Route path="/" component={Home}/>
-                <Route path="/stuff" component={Stuff}/>
-                <Route path="/contact" component={Contact}/>
-            </div>
-            </div>
-        </HashRouter>
-    );
-  }
+import React, {useState, useEffect} from "react";
+import Welcome from './component/Welcome';
+import {ThemeProvider} from 'styled-components';
+import {GlobalStyles} from './theme/GlobalStyles'
+import WebFont from 'webfontloader';
+import {useTheme} from './theme/useTheme';
+import Grid from '@material-ui/core/Grid';
+
+function Main() {
+  const {theme, themeLoaded, getFonts} = useTheme();
+  const [selectedTheme, setSelectedTheme] = useState(theme);
+
+  useEffect(() => {
+    setSelectedTheme(theme);
+  }, [themeLoaded]);
+
+  useEffect(() => {
+    WebFont.load({
+      google: {
+        families: getFonts()
+      }
+    });
+  });
+
+  return (
+    <>
+    {
+      themeLoaded && <ThemeProvider theme={selectedTheme}>
+        <GlobalStyles/>
+          <Grid container justify="center" alignItems="center" spacing={5} style={{fontFamily : selectedTheme.font}}>
+            <Grid item className="title">Cards Against Humanity</Grid>
+            <Grid item>
+              <Welcome/>
+            </Grid>
+          </Grid>
+      </ThemeProvider>
+    }
+    </>
+  );
 }
- 
+
 export default Main;
