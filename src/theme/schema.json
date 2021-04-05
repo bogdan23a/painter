@@ -19,7 +19,7 @@
             },
             "font": "Helvetica",
             "fontSize": {
-                "card": "1.25rem",
+                "card": "1.1rem",
                 "title": "6vmax"
             },
             "fontWeight": "bolder",

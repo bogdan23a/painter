@@ -15,10 +15,10 @@ export const GlobalStyles = createGlobalStyle`
     }
 
     .card {
-        margin-left: ${({theme}) => theme.margin.card.left};
-        margin-bottom: ${({theme}) => theme.margin.card.bottom};
-        margin-right: ${({theme}) => theme.margin.card.right};
-        margin-top: ${({theme}) => theme.margin.card.top};
+        // margin-left: ${({theme}) => theme.margin.card.left};
+        // margin-bottom: ${({theme}) => theme.margin.card.bottom};
+        // margin-right: ${({theme}) => theme.margin.card.right};
+        // margin-top: ${({theme}) => theme.margin.card.top};
         font-size: ${({theme}) => theme.fontSize.card};
         padding-left: ${({theme}) => theme.padding.card.left};
         padding-bottom: ${({theme}) => theme.padding.card.bottom};
@@ -45,5 +45,21 @@ export const GlobalStyles = createGlobalStyle`
 
     .error {
         color: #ff1744;
+    }
+
+    th {
+        font-size: 0.7rem !important;
+        font-family: ${({theme}) => theme.font} !important;
+        color: ${({theme}) => theme.colors.response.text} !important;
+    }
+
+    td {
+        font-family: ${({theme}) => theme.font} !important;
+        color: ${({theme}) => theme.colors.response.text} !important;
+        font-size: 0.5rem !important;
+    }
+    
+    .host {
+        font-size: 0.7rem !important;
     }
 `;    
