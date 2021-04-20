@@ -10,6 +10,7 @@ import MeetingRoom from '@material-ui/icons/MeetingRoom'
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 
+
 class NewUserCard extends Component {
     constructor(props) {
         super(props);
@@ -17,6 +18,9 @@ class NewUserCard extends Component {
         this.login = this.login.bind(this);
         this.onHost = this.onHost.bind(this);
         this.onJoin = this.onJoin.bind(this);
+        this.liveHost = 'https://cardsagainsthumanity-engine.herokuapp.com/'
+        this.localhost = 'http://localhost:1000/'
+        this.currentEnvironment = this.liveHost
     }
     
     login(url = '') {
@@ -29,7 +33,7 @@ class NewUserCard extends Component {
         .then(response => response.json())
         .then(data => {
             console.log(data);
-            this.eventSource =  new EventSource("http://localhost:1000/events/" + data['room']);
+            this.eventSource =  new EventSource(this.currentEnvironment + "events/" + data['room']);
             this.eventSource.onmessage = (response) => this.props.fillUsersPool(JSON.parse(response.data).users)
             this.props.updateRoomState(data['name'], data['room'], data['host'], data['points']);
         })
@@ -39,11 +43,11 @@ class NewUserCard extends Component {
     }
 
     onHost(data) {
-        this.login("http://localhost:1000/users/host/" + data.username);
+        this.login(this.currentEnvironment + "users/host/" + data.username);
     }
 
     onJoin(data) {
-        this.login("http://localhost:1000/users/member/" + data.username + "/" + data.room);
+        this.login(this.currentEnvironment + "users/member/" + data.username + "/" + data.room);
     }
 
     async getBackEndUri() {
